@@ -1,0 +1,29 @@
+http 协议
+
+请求报文
+
+请求行 GET   /sugrec?pre=1&p=3   HTTP/1.1
+请求头 
+
+    Accept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01
+    Accept-Encoding: gzip, deflate, br
+    Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+    Connection: keep-alive
+    Cookie: BIDUPSID=93ED93A1A48F45C7B4AD49B1B4144913;
+    Host: www.baidu.com
+
+空行
+请求体 post请求存在
+
+
+响应报文
+
+响应行  HTTP/1.1   200   OK
+响应头
+
+    Content-Length: 592
+    Content-Type: text/plain; charset=UTF-8
+    Date: Wed, 26 May 2021 02:12:53 GMT
+空行
+响应体
+浏览器控制台response中的内容
