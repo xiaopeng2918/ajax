@@ -2,4 +2,6 @@ ajax官方给定的跨域手段 支持请求的各种方法 GET POST PUT DELETE 
 
 常用的三个API 针对服务端设置请求头
 
-{'Access'}
+'Access-Control-Allow-Headers', '*'  允许发送自定义请求头
+'Access-Control-Allow-Methods', '*'  允许其他请求方法跨域
+'Access-Control-Allow-Origin', '*'  允许请求跨域 默认指头GET和POST
