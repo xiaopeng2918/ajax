@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #666;
+    }
+  </style>
+</head>
+<body>
+  <button>发送请求</button>
+  <div id="result"></div>
+  <script>
+    // 获取按钮DOM元素
+    const btn = document.querySelectorAll('button')[0];
+    // 获取盒子元素
+    const result = document.getElementById('result');
+    // 绑定事件
+    btn.onclick = function (){
+      // 初始化XML对象
+      const xhr = new XMLHttpRequest();
+      // 创建请求
+      console.log(Date.now());
+      xhr.open('GET', 'http://127.0.0.1:3000/ie_cache?a=' + Date.now());
+      // 发起请求
+      xhr.send();
+      // 处理请求
+      xhr.onreadystatechange = function (){
+        if(xhr.readyState === 4){
+          if(xhr.status >= 200 && xhr.status <300){
+            console.log(xhr.response);
+            result.innerHTML = xhr.response;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

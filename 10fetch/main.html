@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>发起请求</button>
+  <script>
+    const btn = document.querySelector('button');
+    /* 
+    fetch 全局对象
+    第一个参数为URL字符串
+    第二个参数为对象
+    对象可以设置请求报文信息
+    */
+    btn.onclick = function () {
+      fetch('http://127.0.0.1:3000/fetch', {
+        method: 'POST',
+        body: "username=admin&password=admin",
+        headers: {
+          name: 'yxp',
+        },
+      }).then((res) => {
+        console.log(res);
+        // 这里再次调用返回对象的json 或者 text方法 返回一个Promise对象
+        // json返回的Promise结果为json对象
+        // text返回的Promise结果为字符串
+        return res.json();
+      }).then((res) => {
+        console.log(res) 
+        console.log(typeof res);
+      })
+    }
+  </script>
+</body>
+
+</html>

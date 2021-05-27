@@ -1,0 +1,7 @@
+注意 
+
+当时用axios发起请求时
+可以设置axios.defaults.baseURL
+
+
+响应必须使用all 来接收

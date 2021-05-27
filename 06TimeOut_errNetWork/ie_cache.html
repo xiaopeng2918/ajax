@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #666;
+    }
+  </style>
+</head>
+<body>
+  <button>发送请求</button>
+  <div id="result"></div>
+  <script>
+    // 获取按钮DOM元素
+    const btn = document.querySelectorAll('button')[0];
+    // 获取盒子元素
+    const result = document.getElementById('result');
+    // 绑定事件
+    btn.onclick = function (){
+      // 初始化XML对象
+      const xhr = new XMLHttpRequest();
+      // 创建请求
+      xhr.open('GET', 'http://127.0.0.1:3000/delay');
+      // 设置超时处理
+      /* 
+      timeout 为XML预定义属性 定义请求时长，若超过时长扔没响应，则取消请求
+      */
+      xhr.timeout = 2000;
+      // 设置超时回调函数
+      /* 
+      ontimeout 为XML预定义方法，值为函数，请求超时会回调这个函数
+      */
+      xhr.ontimeout = function (){
+        alert('请求超时');
+      }
+      // 设置请求网络异常
+      xhr.onerror = function (){
+        alert('网络出了点问题！')
+      }
+      // 发起请求
+      xhr.send();
+      // 处理请求
+      xhr.onreadystatechange = function (){
+        if(xhr.readyState === 4){
+          if(xhr.status >= 200 && xhr.status <300){
+            result.innerHTML = xhr.response;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

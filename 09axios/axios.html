@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+
+<body>
+  <button>GET</button>
+  <button>POST</button>
+  <button>AJAX</button>
+
+  <script>
+    const btns = document.querySelectorAll('button');
+
+    // 设置axios的baseURL
+    axios.defaults.baseURL = 'http://127.0.0.1:3000/';
+    // 发送get请求
+    /* 
+    第一个参数为请求URL
+    第二个参数为对象，可以设置请求参数，设置请求头等
+    */
+    btns[0].onclick = function () {
+      axios.get('axios', {
+        params: {
+          a: 100,
+          b: 200,
+        },
+        headers: {
+          age: 20,
+          height: 180,
+        },
+      }).then((res) => { console.log(res) })
+    }
+    // 发送post请求
+    /* 
+    第一个参数为URL字符串，
+    第二个参数为对象，设置请求体数据内容
+
+    */
+    btns[1].onclick = function () {
+      axios.post('axios', { name: 'yxp', age: 25 }, {
+        params: {
+          c: 100,
+          d: 200,
+        },
+        headers: {
+          age: 20,
+          height: 180,
+        },
+      }).then((res) => { console.log(res) })
+    }
+
+    // 发送AJAX请求
+    /* 
+    只有一个参数
+    参数为一个对象 对象中可以很人性化的设置请求报文各种信息  不分先后顺序
+    */
+    btns[2].onclick = function () {
+      axios({
+        // 请求方法
+        method: 'POST',
+        // 请求路径
+        url: '/axios',
+        // 请求参数
+        params: {
+          a: 100,
+          b: 200,
+        },
+        // 请求头
+        headers: {
+          height: 180,
+          age: 50,
+        },
+        // 请求体
+        data: {
+          name: 'yxp',
+          password: 'admin',
+        }
+      }).then((res) => { 
+        console.log(res);
+        // 状态码
+        console.log(res.status);
+        // 状态信息
+        console.log(res.statusText);
+        // 响应头
+        console.log(res.headers);
+        // 响应体
+        console.log(res.data);
+      })
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>这是主页</h1>
+  <button>获取用户数据</button>
+  <script>
+    // 获取按钮
+    const btn = document.querySelector('button');
+    // 绑定事件获取用户数据
+    btn.onclick = function (){
+      // 初始化xhr
+      const xhr = new XMLHttpRequest();
+      // 创建请求
+      /* 
+      这里可以直接省略域名端口， 会默认补上本机的 因为默认ajax遵循同源策略
+      */
+      xhr.open('GET', '/data');
+      // 发起请求
+      xhr.send();
+      // 处理请求
+      xhr.onreadystatechange = function (){
+        if(xhr.readyState === 4){
+          if(xhr.status >= 200 && xhr.status <300){
+            // 输出响应数据
+            console.log(xhr.response);
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

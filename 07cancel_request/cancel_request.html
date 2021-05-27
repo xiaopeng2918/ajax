@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>发送请求</button> &nbsp;
+  <button>取消请求</button>
+  <script>
+    const btns = document.querySelectorAll('button');
+    const xhr = new XMLHttpRequest();
+    // 回调发起请求
+    btns[0].onclick = function (){
+      // 创建请求
+      xhr.open('GET', 'http://127.0.0.1:3000/cancel');
+      // 发起请求
+      xhr.send();
+    }
+    // 回调取消请求
+    /* 
+    abort() 方法为XML内置方法，用于取消请求
+    */
+    btns[1].onclick = function (){
+      xhr.abort();
+    }
+  </script>
+</body>
+</html>

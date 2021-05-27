@@ -1,0 +1,15 @@
+服务端返回的json 数据 需要转换为字符串形式的json数据
+
+客户端接受的为json数据对象        这里有两个API
+
+服务端（针对node）
+可以使用JSON.stringify()将数据转换为JSON数据字符串
+客户端
+手动转换
+可以使用JSON.parse()将接受的JSON数据字符串转换为对象
+自动转换
+可以用XML对象内置的responseType = 'json' 自动转换
+
+
+心得：
+在demo时， 服务端express 设置的对象，返回时默认转化为JSON数据字符串

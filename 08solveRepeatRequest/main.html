@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>发起请求</button>
+  <script>
+    // 获取button
+    const btn = document.querySelector('button');
+    // 创建XMl对象引用
+    let xhr = null;
+    // false代表没有发送，true代表服务器正在发送
+    let requestStatus = false;
+    btn.onclick = function () {
+      if(requestStatus){
+        xhr.abort();
+      }
+      requestStatus = true;
+      // 初始化
+      xhr = new XMLHttpRequest();
+      // 判断状态，是否为true 为true代表
+      if (requestStatus) {
+        xhr.abort();
+      }
+      // 创建
+      xhr.open('GET', 'http://127.0.0.1:3000/solveRepeat');
+      // 发起
+      xhr.send();
+      // 处理
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          requestStatus = false;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
